@@ -23,7 +23,6 @@ export default function App() {
         <Navbar.Menu>
           <Navbar.Container>
             <Navbar.Item
-              href="/"
               onClick={() => {
                 setSelectedPokedexName(null);
                 setSelectedPokemonName(null);
