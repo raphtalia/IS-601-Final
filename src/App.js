@@ -6,10 +6,16 @@ import SelectPokemon from "./SelectPokemon";
 import PokemonDetails from "./PokemonDetails";
 const P = new Pokedex();
 
+export let selectedPokedexNameFOR_TESTING;
+export let selectedPokemonNameFOR_TESTING;
+
 export default function App() {
   const [selectedPokedexName, setSelectedPokedexName] = useState(null);
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
   const [error, setError] = useState(null);
+
+  selectedPokedexNameFOR_TESTING = selectedPokedexName;
+  selectedPokemonNameFOR_TESTING = selectedPokemonName;
 
   return (
     <Fragment>

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Pokedex } from "pokeapi-js-wrapper";
-import App from "./App";
+import App, { selectedPokedexNameFOR_TESTING, selectedPokemonNameFOR_TESTING } from "./App";
 
 jest.mock("pokeapi-js-wrapper");
 
@@ -69,9 +69,13 @@ test("GIVEN the user is attempting to select a Pokédex WHEN an error occurs fro
 });
 
 // Requirement 3
-test('GIVEN a user see Pokédexes to select WHEN the user clicks the "View" button for a given Pokédex THEN their selection is stored', () => {
+test('GIVEN a user see Pokédexes to select WHEN the user clicks the "View" button for a given Pokédex THEN their selection is stored', async () => {
   // Testing state directly is not ideal
   // https://stackoverflow.com/questions/61813319/check-state-of-a-component-using-react-testing-library
+  // https://testing-library.com/docs/#what-you-should-avoid-with-testing-library
+  const { user } = setup(<App />);
+  await user.click(await screen.findByText("View"));
+  expect(selectedPokedexNameFOR_TESTING).toBe("national");
 });
 
 // Requirement 4
@@ -89,9 +93,14 @@ test("GIVEN the user is attempting to select a Pokémon WHEN an error occurs fro
 });
 
 // Requirement 6
-test('GIVEN a user see a list of Pokémon to select WHEN the user clicks the "View Details" button for a given Pokémon THEN their selection is stored', () => {
+test('GIVEN a user see a list of Pokémon to select WHEN the user clicks the "View Details" button for a given Pokémon THEN their selection is stored', async () => {
   // Testing state directly is not ideal
   // https://stackoverflow.com/questions/61813319/check-state-of-a-component-using-react-testing-library
+  // https://testing-library.com/docs/#what-you-should-avoid-with-testing-library
+  const { user } = setup(<App />);
+  await user.click(await screen.findByText("View"));
+  await user.click(await screen.findByText("View Details"));
+  expect(selectedPokemonNameFOR_TESTING).toBe("bulbasaur");
 });
 
 // Requirement 7
