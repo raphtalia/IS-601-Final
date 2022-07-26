@@ -118,9 +118,8 @@ test('GIVEN a user is using your application WHEN they click the "Home" button T
   const { user } = setup(<App />);
   await user.click(await screen.findByText("View"));
   await user.click(await screen.findByText("View Details"));
-  await screen.findByText("bulbasaur");
+  await screen.findByText("Ability Name");
   await user.click(screen.getByText("Home"));
-  // TODO: Check why screen isn't re-rendering
   await screen.findByText("national");
 });
 
@@ -129,8 +128,7 @@ test('GIVEN a user has selected a Pokédex or a Pokémon WHEN they click the "Ba
   const { user } = setup(<App />);
   await user.click(await screen.findByText("View"));
   await user.click(await screen.findByText("View Details"));
-  await screen.findByText("bulbasaur");
+  await screen.findByText("Ability Name");
   await user.click(screen.getByText("Back"));
-  // TODO: Check why screen isn't re-rendering
-  await screen.findByText("View");
+  await screen.findByText("View Details");
 });
